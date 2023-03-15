@@ -1,7 +1,7 @@
 import random
 
-from tp.utilities.calculArithm import pgcd
-from tp.utilities.calculArithm import inverse_mod
+from tp.utilities.calcul_arithm import pgcd
+from tp.utilities.calcul_arithm import inverse_mod
 
 #fonction qui génère les clés publiques et privées
 def generate_keys(nbits):

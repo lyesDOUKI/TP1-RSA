@@ -1,4 +1,4 @@
-import tp.utilities.calculArithm as  calculArithm
+import tp.utilities.calcul_arithm as  calculArithm
 import tp.keysFonction.genration_keys as keysFonction
 from tp.chiffDechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
 print("generation de clé publique et privée")
