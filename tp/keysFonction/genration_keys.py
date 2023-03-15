@@ -21,17 +21,18 @@ def generate_keys(nbits):
     print("n = ",n)
     phi = (p-1)*(q-1)
     print("phi = ",phi)
-    e = random.randint(2, 2**(nbits // 2))
-    print("pgcd(e, phi) = ",pgcd(e,phi))
-    result_pgcd, d, k = inverse_mod(phi, e)
-    print("resultat de la fonction de l'algorthime d'euclide : ")
-    print("pgcd = ",result_pgcd)
-    print("k = ",k)
-    print("d = ",d)
 
+
+    e = random.randint(2, 2**(nbits // 2))
+    result_pgcd, d, k = inverse_mod(phi, e)
     while result_pgcd!=1:
         e = random.randint(2, 2**(nbits // 2))
         result_pgcd, k, d  = inverse_mod(phi, e)
+    print("resultat de la fonction de l'algorthime d'euclide : ")
+    print("e = ",e)
+    print("pgcd = ",result_pgcd)
+    print("k = ",k)
+    print("d = ",d)
     return (e,n),(d,n)
 
 
