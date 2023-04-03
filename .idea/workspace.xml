@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf75158f-f667-433d-93b1-557f258767bd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tp/chiffDechiff/chiffrer_dechiffrer.py" afterDir="false" />
+    <list default="true" id="cf75158f-f667-433d-93b1-557f258767bd" name="Changes" comment="renommer les fichiers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/chiffDechiff/chiffrer_dechiffrer.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/chiffDechiff/chiffrer_dechiffrer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/keysFonction/genration_keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/keysFonction/genration_keys.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/launcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/launcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp/utilities/calculArithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/utilities/calculArithm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/utilities/calcul_arithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/utilities/calcul_arithm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,8 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel",
@@ -88,7 +89,18 @@
       <workItem from="1678888718128" duration="532000" />
       <workItem from="1678889807727" duration="358000" />
       <workItem from="1678890203411" duration="7688000" />
+      <workItem from="1678912688488" duration="93000" />
+      <workItem from="1679214389989" duration="26000" />
+      <workItem from="1680509937384" duration="5694000" />
     </task>
+    <task id="LOCAL-00001" summary="renommer les fichiers">
+      <created>1678912763400</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678912763400</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,8 +123,12 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="renommer les fichiers" />
+    <option name="LAST_COMMIT_MESSAGE" value="renommer les fichiers" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TP1$Launcher.coverage" NAME="Launcher Coverage Results" MODIFIED="1678897814890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
+    <SUITE FILE_PATH="coverage/TP1$Launcher.coverage" NAME="Launcher Coverage Results" MODIFIED="1680515686342" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
     <SUITE FILE_PATH="coverage/TP1$laucher.coverage" NAME="laucher Coverage Results" MODIFIED="1678893602047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
     <SUITE FILE_PATH="coverage/TP1$genration_keys.coverage" NAME="genration_keys Coverage Results" MODIFIED="1678893702976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp/keysFonction" />
   </component>
