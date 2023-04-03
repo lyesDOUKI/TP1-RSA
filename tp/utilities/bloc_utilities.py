@@ -14,3 +14,9 @@ def convert_bloc_to_int(bloc, dictionnaire):
             tmp.append(dictionnaire[bloc[i][j].upper()])
         bloc_int.append(tmp)
     return bloc_int
+#fonction qui chiffre un bloc
+def chiffrer_bloc(bloc, taille_dictionnaire):
+    bloc_chiffre = 0
+    for i in range(len(bloc)):
+        bloc_chiffre += bloc[i] * (taille_dictionnaire ** (len(bloc) - i - 1))
+    return bloc_chiffre
