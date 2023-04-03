@@ -20,9 +20,10 @@ def generate_keys(nbits):
     while(is_prime(q)==False and q != p):
         q = random.randint(2, 2**(nbits // 2))
 
-    #print("le p : ",p)
-    #print("le q : ",q)
-    n = 755918011
+    print("le p : ",p)
+    print("le q : ",q)
+    n= p*q
+    #n = 755918011
     p, q = factorize(n)
     print("le p : ",p)
     print("le q : ",q)
@@ -32,8 +33,8 @@ def generate_keys(nbits):
     print("phi = ",phi)
 
 
-    #e = random.randint(2, 2**(nbits // 2))
-    e =163119273
+    e = random.randint(2, 2**(nbits // 2))
+    #e =163119273
     result_pgcd, d, k = inverse_mod(e, phi)
     while result_pgcd!=1:
         e = random.randint(2, 2**(nbits // 2))
