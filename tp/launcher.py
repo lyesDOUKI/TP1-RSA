@@ -59,7 +59,10 @@ dictionnaire["j"] = 40
 print(dictionnaire)
 taille_bloc = int((math.log(n, 41)))
 print("taille du bloc : ", taille_bloc)
-message_a_chiffrer = "bonjour agma qriv anoh ar tmourt"
+message_a_chiffrer = "bonjour comment allez vous ?"
+if(len(message_a_chiffrer) % taille_bloc != 0):
+    print("le message n'est pas divisible par la taille du bloc, on ajoute des espaces")
+    message_a_chiffrer = " " + message_a_chiffrer
 list_des_bloc = decoupe_bloc(message_a_chiffrer, taille_bloc)
 print("decoupage du message en bloc :  ", list_des_bloc)
 list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
@@ -109,7 +112,7 @@ message_final = ""
 for i in range(len(message_original)):
     message_final += message_original[i]
 if(message_final == message_a_chiffrer.upper()):
-    print("felicitation, le message est bien déchiffré")
+    print("felicitation, le message a bien été chiffré et déchiffré")
     print("message à chiffré : ", message_a_chiffrer.upper())
     print("message chiffré  : ", message_chiffre_final)
     print("message déchiffré : ", message_final)
