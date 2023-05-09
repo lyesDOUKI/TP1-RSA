@@ -34,7 +34,6 @@ def generate_keys(nbits):
 
 
     e = random.randint(2, 2**(nbits // 2))
-    #e =163119273
     result_pgcd, d, k = inverse_mod(e, phi)
     while result_pgcd!=1:
         e = random.randint(2, 2**(nbits // 2))

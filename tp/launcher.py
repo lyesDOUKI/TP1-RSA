@@ -1,35 +1,38 @@
 import math
 
-import tp.utilities.calcul_arithm as  calculArithm
+import tp.utilities.calcul_arithm as calculArithm
 import tp.keysFonction.genration_keys as keysFonction
 from tp.chiffDechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
-from tp.utilities.bloc_utilities import decoupe_bloc
+from tp.utilities.bloc_utilities import decoupe_bloc, convert_bloc_to_lettre, dechiffre
 from tp.utilities.bloc_utilities import convert_bloc_to_int
 from tp.utilities.bloc_utilities import chiffrer_bloc
+
 print("generation de clé publique et privée")
-(e,n),(d,n) = keysFonction.generate_keys(24)
-print("clé publique: ",e,n)
-print("clé privée: ",d,n)
-message =   31
-print("chiffrer le message : ",message)
-#si c'est une liste
-if(isinstance(message, list)):
-    listMessageDecry= []
-    c= []
-    for i in range(len(message)):
+(e, n), (d, n) = keysFonction.generate_keys(16)
+print("clé publique: ", e, n)
+print("clé privée: ", d, n)
+message = 31
+print("chiffrer le message : ", message)
+# si c'est une liste
+taille_liste = 0
+if (isinstance(message, list)):
+    taille_liste = len(message)
+    listMessageDecry = []
+    c = []
+    for i in range(taille_liste):
         tmp = chiffrer_dechiffrer(message[i], d, n)
         listMessageDecry.append(tmp)
-    print("message déchiffré : ",listMessageDecry)
-    for i in range(len(message)):
+    print("message déchiffré : ", listMessageDecry)
+    for i in range(taille_liste):
         tmp = chiffrer_dechiffrer(listMessageDecry[i], e, n)
         c.append(tmp)
-    print("message chiffré : ",c)
+    print("message chiffré : ", c)
 else:
-    #si c'est un entier
+    # si c'est un entier
     message_chiffre = chiffrer_dechiffrer(message, e, n)
-    print("message chiffré : ",message_chiffre)
+    print("message chiffré : ", message_chiffre)
     message_dechiffre = chiffrer_dechiffrer(message_chiffre, d, n)
-    print("message déchiffré : ",message_dechiffre)
+    print("message déchiffré : ", message_dechiffre)
 
 dictionnaire = {}
 
@@ -42,20 +45,52 @@ dictionnaire["_"] = 26
 dictionnaire[","] = 27
 dictionnaire["?"] = 28
 dictionnaire["€"] = 29
-for i in range(30, 41):
-    dictionnaire[i] = i-30
+dictionnaire[" "] = 30
+dictionnaire["a"] = 31
+dictionnaire["b"] = 32
+dictionnaire["c"] = 33
+dictionnaire["d"] = 34
+dictionnaire["e"] = 35
+dictionnaire["f"] = 36
+dictionnaire["g"] = 37
+dictionnaire["h"] = 38
+dictionnaire["i"] = 39
+dictionnaire["j"] = 40
 print(dictionnaire)
 print("taille bloc ")
-taille_bloc = int((math.log(n,40)))
-taille_bloc = taille_bloc
-print( taille_bloc)
-message_a_chiffrer = "message"
+taille_bloc = int((math.log(n, 41)))
+print(taille_bloc)
+message_a_chiffrer = "bonjour a gma"
 list_des_bloc = decoupe_bloc(message_a_chiffrer, taille_bloc)
-print(list_des_bloc)
+print("decoupage message :  ", list_des_bloc)
 list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
-print(list_des_bloc_chiffre)
+print("chiffrage message decoupé en des entiers : ", list_des_bloc_chiffre)
 list_des_bloc_chiffre_int = []
 for i in range(len(list_des_bloc_chiffre)):
     tmp = chiffrer_bloc(list_des_bloc_chiffre[i], 40)
     list_des_bloc_chiffre_int.append(tmp)
-print(list_des_bloc_chiffre_int)
+print("chiffrage etape 1 : ", list_des_bloc_chiffre_int)
+# chiffrer les blocs
+chiffrage_bloc = []
+for i in range(len(list_des_bloc_chiffre_int)):
+    tmp = chiffrer_dechiffrer(list_des_bloc_chiffre_int[i], e, n)
+    chiffrage_bloc.append(tmp)
+print("chiffrage etape 2 : ", chiffrage_bloc)
+# parcourir chiffrage_bloc
+list_msg_chiffre = []
+for i in range(len(chiffrage_bloc)):
+    if(chiffrage_bloc[i] > 40**taille_bloc):
+        print("trop grand pour rester sur la meme taille de bloc, valeur du bloc : ",
+             chiffrage_bloc[i], " > ", 40**2, "40 ** taille_bloc")
+        taille_blocV2 = taille_bloc + 1
+        recup = dechiffre(chiffrage_bloc[i], dictionnaire, taille_blocV2)
+        list_msg_chiffre.append(recup)
+    else:
+        recup = dechiffre(chiffrage_bloc[i], dictionnaire, taille_bloc)
+        list_msg_chiffre.append(recup)
+print("message chiffré : ", list_msg_chiffre)
+dechiffrage_bloc = []
+for i in range(len(chiffrage_bloc)):
+    tmp = chiffrer_dechiffrer(chiffrage_bloc[i], d, n)
+    dechiffrage_bloc.append(tmp)
+print("dechiffrage des entiers : ", dechiffrage_bloc)

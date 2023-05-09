@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf75158f-f667-433d-93b1-557f258767bd" name="Changes" comment="partie 3, decoupage du message">
+    <list default="true" id="cf75158f-f667-433d-93b1-557f258767bd" name="Changes" comment="partie 3, decoupage du message, suite">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/keysFonction/genration_keys.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/keysFonction/genration_keys.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/launcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/launcher.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tp/utilities/bloc_utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/utilities/bloc_utilities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp/utilities/calcul_arithm.py" beforeDir="false" afterPath="$PROJECT_DIR$/tp/utilities/calcul_arithm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,14 @@
       <workItem from="1678912688488" duration="93000" />
       <workItem from="1679214389989" duration="26000" />
       <workItem from="1680509937384" duration="9378000" />
-      <workItem from="1680522902278" duration="2135000" />
+      <workItem from="1680522902278" duration="2777000" />
+      <workItem from="1680770697128" duration="15000" />
+      <workItem from="1681136549241" duration="1992000" />
+      <workItem from="1681471040028" duration="3081000" />
+      <workItem from="1681474351154" duration="148000" />
+      <workItem from="1683270533765" duration="73000" />
+      <workItem from="1683572248430" duration="1159000" />
+      <workItem from="1683632680402" duration="11896000" />
     </task>
     <task id="LOCAL-00001" summary="renommer les fichiers">
       <created>1678912763400</created>
@@ -113,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680519665811</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="partie 3, decoupage du message, suite">
+      <created>1680525097911</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680525097911</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,11 +156,33 @@
     <MESSAGE value="renommer les fichiers" />
     <MESSAGE value="partie 2" />
     <MESSAGE value="partie 3, decoupage du message" />
-    <option name="LAST_COMMIT_MESSAGE" value="partie 3, decoupage du message" />
+    <MESSAGE value="partie 3, decoupage du message, suite" />
+    <option name="LAST_COMMIT_MESSAGE" value="partie 3, decoupage du message, suite" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tp/utilities/bloc_utilities.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tp/utilities/bloc_utilities.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tp/utilities/bloc_utilities.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/TP1$Launcher.coverage" NAME="Launcher Coverage Results" MODIFIED="1680524971583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
-    <SUITE FILE_PATH="coverage/TP1$laucher.coverage" NAME="laucher Coverage Results" MODIFIED="1678893602047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
     <SUITE FILE_PATH="coverage/TP1$genration_keys.coverage" NAME="genration_keys Coverage Results" MODIFIED="1678893702976" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp/keysFonction" />
+    <SUITE FILE_PATH="coverage/TP1$laucher.coverage" NAME="laucher Coverage Results" MODIFIED="1678893602047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
+    <SUITE FILE_PATH="coverage/TP1$Launcher.coverage" NAME="Launcher Coverage Results" MODIFIED="1683647681111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tp" />
   </component>
 </project>

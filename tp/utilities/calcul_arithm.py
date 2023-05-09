@@ -39,3 +39,12 @@ def factorize(n):
     while n % p != 0:
         p += 1
     return p, n // p
+#convertir int to lettre
+def convert_int_to_lettre(bloc, dictionnaire):
+    bloc_lettre = []
+    for i in range(len(bloc)):
+        tmp = []
+        for j in range(len(bloc[i])):
+            tmp.append(dictionnaire[bloc[i][j]])
+        bloc_lettre.append(tmp)
+    return bloc_lettre
