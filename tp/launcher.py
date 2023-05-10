@@ -1,9 +1,7 @@
 import math
-
-import tp.utilities.calcul_arithm as calculArithm
 import tp.keysfonction.genration_keys as keysFonction
 from tp.chiffdechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
-from tp.utilities.bloc_utilities import decoupe_bloc, convert_bloc_to_lettre, dechiffre
+from tp.utilities.bloc_utilities import decoupe_bloc, dechiffre
 from tp.utilities.bloc_utilities import convert_bloc_to_int
 from tp.utilities.bloc_utilities import chiffrer_bloc
 
