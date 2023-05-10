@@ -7,9 +7,10 @@ from tp.utilities.bloc_utilities import chiffrer_bloc
 
 print("generation de clé publique et privée")
 (e, n), (d, n) = keysFonction.generate_keys(16)
-print("clé publique: ", e, n)
-print("clé privée: ", d, n)
+print(" -clé publique: ", e, n)
+print(" -clé privée: ", d, n)
 message = 31
+print("##################################################")
 print("chiffrer le message : ", message)
 # si c'est une liste
 taille_liste = 0
@@ -31,7 +32,7 @@ else:
     print("message chiffré : ", message_chiffre)
     message_dechiffre = chiffrer_dechiffrer(message_chiffre, d, n)
     print("message déchiffré : ", message_dechiffre)
-
+print("##################################################")
 dictionnaire = {}
 
 # Ajout des lettres de l'alphabet et de leurs valeurs
