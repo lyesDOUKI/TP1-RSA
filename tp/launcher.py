@@ -6,7 +6,7 @@ from tp.utilities.bloc_utilities import convert_bloc_to_int
 from tp.utilities.bloc_utilities import chiffrer_bloc
 
 print("generation de clé publique et privée")
-(e, n), (d, n) = keysFonction.generate_keys(16)
+(e, n), (d, n) = keysFonction.generate_keys(32)
 print(" -clé publique: ", e, n)
 print(" -clé privée: ", d, n)
 message = 31
@@ -45,30 +45,27 @@ dictionnaire[","] = 27
 dictionnaire["?"] = 28
 dictionnaire["€"] = 29
 dictionnaire[" "] = 30
-dictionnaire["a"] = 31
-dictionnaire["b"] = 32
-dictionnaire["c"] = 33
-dictionnaire["d"] = 34
-dictionnaire["e"] = 35
-dictionnaire["f"] = 36
-dictionnaire["g"] = 37
-dictionnaire["h"] = 38
-dictionnaire["i"] = 39
-dictionnaire["j"] = 40
+dictionnaire["0"] = 31
+dictionnaire["1"] = 32
+dictionnaire["2"] = 33
+dictionnaire["3"] = 34
+dictionnaire["4"] = 35
+dictionnaire["5"] = 36
+dictionnaire["6"] = 37
+dictionnaire["7"] = 38
+dictionnaire["8"] = 39
+dictionnaire["9"] = 40
 print(dictionnaire)
-taille_bloc = int((math.log(n, 41)))
+taille_bloc = int((math.log(n, len(dictionnaire))))
 print("taille du bloc : ", taille_bloc)
-message_a_chiffrer = "je reussi a chiffrer un message, et ouais c est cool"
-if(len(message_a_chiffrer) % taille_bloc != 0):
-    print("le message n'est pas divisible par la taille du bloc, on ajoute des espaces")
-    message_a_chiffrer = " " + message_a_chiffrer
+message_a_chiffrer = "je reussi a chiffrer, un message et ouais c est cool"
 list_des_bloc = decoupe_bloc(message_a_chiffrer, taille_bloc)
 print("decoupage du message en bloc :  ", list_des_bloc)
 list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
 print("chiffrage message decoupé en nombres : ", list_des_bloc_chiffre)
 list_des_bloc_chiffre_int = []
 for i in range(len(list_des_bloc_chiffre)):
-    tmp = chiffrer_bloc(list_des_bloc_chiffre[i], 40)
+    tmp = chiffrer_bloc(list_des_bloc_chiffre[i], len(dictionnaire))
     list_des_bloc_chiffre_int.append(tmp)
 print("etape 1 : chiffrage des lettres en nombres chiffré : ", list_des_bloc_chiffre_int)
 # chiffrer les blocs
@@ -80,7 +77,7 @@ print("etape 2 : chiffrage des nombres chiffrée (etape 1)  : ", chiffrage_bloc)
 # parcourir chiffrage_bloc
 list_msg_chiffre = []
 for i in range(len(chiffrage_bloc)):
-    if(chiffrage_bloc[i] > 40**taille_bloc):
+    if(chiffrage_bloc[i] > len(dictionnaire)**taille_bloc):
         #print("trop grand pour rester sur la meme taille de bloc, valeur du bloc : ",
          #    chiffrage_bloc[i], " > ", 40**2, "40 ** taille_bloc")
         taille_blocV2 = taille_bloc + 1
@@ -110,6 +107,7 @@ print("etape 6 : nombres chiffrée en lettres : ", message_original)
 message_final = ""
 for i in range(len(message_original)):
     message_final += message_original[i]
+message_final = message_final[0:len(message_a_chiffrer)]
 if(message_final == message_a_chiffrer.upper()):
     print("felicitation, le message a bien été chiffré et déchiffré")
     print("message à chiffré : ", message_a_chiffrer.upper())
