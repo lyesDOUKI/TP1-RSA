@@ -1,8 +1,8 @@
 import math
 
 import tp.utilities.calcul_arithm as calculArithm
-import tp.keysFonction.genration_keys as keysFonction
-from tp.chiffDechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
+import tp.keysfonction.genration_keys as keysFonction
+from tp.chiffdechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
 from tp.utilities.bloc_utilities import decoupe_bloc, convert_bloc_to_lettre, dechiffre
 from tp.utilities.bloc_utilities import convert_bloc_to_int
 from tp.utilities.bloc_utilities import chiffrer_bloc
@@ -59,7 +59,7 @@ dictionnaire["j"] = 40
 print(dictionnaire)
 taille_bloc = int((math.log(n, 41)))
 print("taille du bloc : ", taille_bloc)
-message_a_chiffrer = "bonjour comment allez vous ?"
+message_a_chiffrer = "je reussi a chiffrer un message, et ouais c est cool"
 if(len(message_a_chiffrer) % taille_bloc != 0):
     print("le message n'est pas divisible par la taille du bloc, on ajoute des espaces")
     message_a_chiffrer = " " + message_a_chiffrer
