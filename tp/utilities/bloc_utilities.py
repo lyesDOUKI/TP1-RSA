@@ -45,18 +45,18 @@ def dechiffrer_bloc(bloc, taille_dictionnaire, dictionnaire):
         bloc_dechiffre[i] = dictionnaire[bloc_dechiffre[i]]
     return bloc_dechiffre
 #fonction qui dechiffre un bloc en entier
-def dechiffre(bloc, dictionnare, taille_bloc):
+def dechiffre(bloc, dictionnaire, taille_bloc):
     bloc_dechiifre = []
     mot_dechiffre = ""
     q = bloc
     taille_bloc = taille_bloc - 1
     while (taille_bloc >= 0):
-        x = q // (len(dictionnare) ** taille_bloc)
-        q = q % (len(dictionnare) ** (taille_bloc))
+        x = q // (len(dictionnaire) ** taille_bloc)
+        q = q % (len(dictionnaire) ** (taille_bloc))
         bloc_dechiifre.append(x)
         taille_bloc -= 1
     for i in range(len(bloc_dechiifre)):
-        for cle in dictionnare:
-            if dictionnare[cle] == bloc_dechiifre[i]:
+        for cle in dictionnaire:
+            if dictionnaire[cle] == bloc_dechiifre[i]:
                 mot_dechiffre += cle
-    return mot_dechiffre
+    return mot_dechiffre, bloc_dechiifre

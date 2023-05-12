@@ -9,7 +9,7 @@ print("generation de clé publique et privée")
 (e, n), (d, n) = keysFonction.generate_keys(32)
 print(" -clé publique: ", e, n)
 print(" -clé privée: ", d, n)
-message = 31
+message = 123
 print("##################################################")
 print("chiffrer le message : ", message)
 # si c'est une liste
@@ -58,11 +58,11 @@ dictionnaire[" "] = 40
 print(dictionnaire)
 taille_bloc = int((math.log(n, len(dictionnaire))))
 print("taille du bloc : ", taille_bloc)
-message_a_chiffrer = "je reussi a chiffrer, un message et ouais c est cool"
+message_a_chiffrer = "lyes douki"
 list_des_bloc = decoupe_bloc(message_a_chiffrer, taille_bloc)
-print("decoupage du message en bloc :  ", list_des_bloc)
+print("etape 0a : decoupage du message en bloc :  ", list_des_bloc)
 list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
-print("chiffrage message decoupé en nombres : ", list_des_bloc_chiffre)
+print("etape 0b  : chiffrage message decoupé en nombres : ", list_des_bloc_chiffre)
 list_des_bloc_chiffre_int = []
 for i in range(len(list_des_bloc_chiffre)):
     tmp = chiffrer_bloc(list_des_bloc_chiffre[i], len(dictionnaire))
@@ -76,33 +76,51 @@ for i in range(len(list_des_bloc_chiffre_int)):
 print("etape 2 : chiffrage des nombres chiffrée (etape 1)  : ", chiffrage_bloc)
 # parcourir chiffrage_bloc
 list_msg_chiffre = []
-for i in range(len(chiffrage_bloc)):
+list_msg_chiffre_int = []
+taille_blocV2 = 0
+i = 0
+while(taille_blocV2 == 0 and i < len(chiffrage_bloc)):
     if(chiffrage_bloc[i] > len(dictionnaire)**taille_bloc):
-        #print("trop grand pour rester sur la meme taille de bloc, valeur du bloc : ",
-         #    chiffrage_bloc[i], " > ", 40**2, "40 ** taille_bloc")
+        print("!!!!!!!!! la taille du bloc change !!!!!!!!!")
         taille_blocV2 = taille_bloc + 1
-        recup = dechiffre(chiffrage_bloc[i], dictionnaire, taille_blocV2)
-        list_msg_chiffre.append(recup)
-    else:
-        recup = dechiffre(chiffrage_bloc[i], dictionnaire, taille_bloc)
-        list_msg_chiffre.append(recup)
-print("etape 3 : message chiffré en lettres : ", list_msg_chiffre)
+        print("!!!!!!!!! nouvelle taille du bloc : ", taille_blocV2, " !!!!!!!!!")
+    i = i + 1
+if(taille_blocV2 != 0):
+
+    for i in range(len(chiffrage_bloc)):
+        recup_lettre, recup_chiffre = dechiffre(chiffrage_bloc[i], dictionnaire, taille_blocV2)
+        list_msg_chiffre.append(recup_lettre)
+        list_msg_chiffre_int.append(recup_chiffre)
+else:
+    for i in range(len(chiffrage_bloc)):
+        recup_lettre, recup_chiffre = dechiffre(chiffrage_bloc[i], dictionnaire, taille_bloc)
+        list_msg_chiffre.append(recup_lettre)
+        list_msg_chiffre_int.append(recup_chiffre)
+print("etape 3a : dechiffrage du message chiffrée en nombres : ", list_msg_chiffre_int)
+print("etape 3b : dechiffrage du message chiffrée en lettres : ", list_msg_chiffre)
+list_last_chiffrage = []
+for i in range(len(list_msg_chiffre_int)):
+    last_chiffrage = chiffrer_bloc(list_msg_chiffre_int[i], len(dictionnaire))
+    list_last_chiffrage.append(last_chiffrage)
+print("etape 3c : chiffrage du message déchiffrée en nombres : ", list_last_chiffrage)
 # construction du message
 message_chiffre_final = ""
 for i in range(len(list_msg_chiffre)):
     message_chiffre_final += list_msg_chiffre[i]
-print("etape 4 : message chiffré final : ", message_chiffre_final)
 dechiffrage_bloc = []
-for i in range(len(chiffrage_bloc)):
-    tmp = chiffrer_dechiffrer(chiffrage_bloc[i], d, n)
+for i in range(len(list_last_chiffrage)):
+    tmp = chiffrer_dechiffrer(list_last_chiffrage[i], d, n)
     dechiffrage_bloc.append(tmp)
-print("etape 5 : dechiffrage du message chiffrée en nombres : ", dechiffrage_bloc)
+print("etape 4 : dechiffrage du message chiffrée en nombres : ", dechiffrage_bloc)
 # affichage message original
 message_original = []
 for i in range(len(chiffrage_bloc)):
-        recupere_mot = dechiffre(list_des_bloc_chiffre_int[i], dictionnaire, taille_bloc)
+        recupere_mot, recupere_int = dechiffre(list_des_bloc_chiffre_int[i], dictionnaire, taille_bloc)
         message_original.append(recupere_mot)
-print("etape 6 : nombres chiffrée en lettres : ", message_original)
+print("etape 5 : nombres chiffrée en lettres : ", message_original)
+print("etape 6 : decoupage en entiers correspondant au lettres : ", convert_bloc_to_int(
+    message_original, dictionnaire)
+)
 #construction du message
 message_final = ""
 for i in range(len(message_original)):
