@@ -4,6 +4,8 @@ from tp.chiffdechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
 from tp.utilities.bloc_utilities import decoupe_bloc, dechiffre
 from tp.utilities.bloc_utilities import convert_bloc_to_int
 from tp.utilities.bloc_utilities import chiffrer_bloc
+from tkinter import *
+#creation d'une fenetre
 
 print("generation de clé publique et privée")
 (e, n), (d, n) = keysFonction.generate_keys(32)
@@ -58,55 +60,58 @@ dictionnaire[" "] = 40
 print(dictionnaire)
 taille_bloc = int((math.log(n, len(dictionnaire))))
 print("taille du bloc : ", taille_bloc)
-message_a_chiffrer = "lyes douki"
-list_des_bloc = decoupe_bloc(message_a_chiffrer, taille_bloc)
-print("etape 0a : decoupage du message en bloc :  ", list_des_bloc)
-list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
-print("etape 0b  : chiffrage message decoupé en nombres : ", list_des_bloc_chiffre)
-list_des_bloc_chiffre_int = []
-for i in range(len(list_des_bloc_chiffre)):
-    tmp = chiffrer_bloc(list_des_bloc_chiffre[i], len(dictionnaire))
-    list_des_bloc_chiffre_int.append(tmp)
-print("etape 1 : chiffrage des lettres en nombres chiffré : ", list_des_bloc_chiffre_int)
-# chiffrer les blocs
-chiffrage_bloc = []
-for i in range(len(list_des_bloc_chiffre_int)):
-    tmp = chiffrer_dechiffrer(list_des_bloc_chiffre_int[i], e, n)
-    chiffrage_bloc.append(tmp)
-print("etape 2 : chiffrage des nombres chiffrée (etape 1)  : ", chiffrage_bloc)
-# parcourir chiffrage_bloc
-list_msg_chiffre = []
-list_msg_chiffre_int = []
-taille_blocV2 = 0
-i = 0
-while(taille_blocV2 == 0 and i < len(chiffrage_bloc)):
-    if(chiffrage_bloc[i] > len(dictionnaire)**taille_bloc):
-        print("!!!!!!!!! la taille du bloc change !!!!!!!!!")
-        taille_blocV2 = taille_bloc + 1
-        print("!!!!!!!!! nouvelle taille du bloc : ", taille_blocV2, " !!!!!!!!!")
-    i = i + 1
-if(taille_blocV2 != 0):
+#message_a_chiffrer = input("tu veux chiffre quoi ?\n")
+def logic():
+    list_des_bloc = decoupe_bloc(message_graph.get(), taille_bloc)
+    print("etape 0a : decoupage du message en bloc :  ", list_des_bloc)
+    list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
+    print("etape 0b  : chiffrage message decoupé en nombres : ", list_des_bloc_chiffre)
+    list_des_bloc_chiffre_int = []
+    for i in range(len(list_des_bloc_chiffre)):
+        tmp = chiffrer_bloc(list_des_bloc_chiffre[i], len(dictionnaire))
+        list_des_bloc_chiffre_int.append(tmp)
+    print("etape 1 : chiffrage des lettres en nombres chiffré : ", list_des_bloc_chiffre_int)
+    # chiffrer les blocs
+    chiffrage_bloc = []
+    for i in range(len(list_des_bloc_chiffre_int)):
+        tmp = chiffrer_dechiffrer(list_des_bloc_chiffre_int[i], e, n)
+        chiffrage_bloc.append(tmp)
+    print("etape 2 : chiffrage des nombres chiffrée (etape 1)  : ", chiffrage_bloc)
+    # parcourir chiffrage_bloc
+    list_msg_chiffre = []
+    list_msg_chiffre_int = []
+    taille_blocV2 = 0
+    i = 0
+    while(taille_blocV2 == 0 and i < len(chiffrage_bloc)):
+        if(chiffrage_bloc[i] > len(dictionnaire)**taille_bloc):
+            print("!!!!!!!!! la taille du bloc change !!!!!!!!!")
+            taille_blocV2 = taille_bloc + 1
+            print("!!!!!!!!! nouvelle taille du bloc : ", taille_blocV2, " !!!!!!!!!")
+        i = i + 1
+    if(taille_blocV2 != 0):
 
-    for i in range(len(chiffrage_bloc)):
-        recup_lettre, recup_chiffre = dechiffre(chiffrage_bloc[i], dictionnaire, taille_blocV2)
-        list_msg_chiffre.append(recup_lettre)
-        list_msg_chiffre_int.append(recup_chiffre)
-else:
-    for i in range(len(chiffrage_bloc)):
-        recup_lettre, recup_chiffre = dechiffre(chiffrage_bloc[i], dictionnaire, taille_bloc)
-        list_msg_chiffre.append(recup_lettre)
-        list_msg_chiffre_int.append(recup_chiffre)
-print("etape 3a : dechiffrage du message chiffrée en nombres : ", list_msg_chiffre_int)
-print("etape 3b : dechiffrage du message chiffrée en lettres : ", list_msg_chiffre)
-list_last_chiffrage = []
-for i in range(len(list_msg_chiffre_int)):
-    last_chiffrage = chiffrer_bloc(list_msg_chiffre_int[i], len(dictionnaire))
-    list_last_chiffrage.append(last_chiffrage)
-print("etape 3c : chiffrage du message déchiffrée en nombres : ", list_last_chiffrage)
-# construction du message
-message_chiffre_final = ""
-for i in range(len(list_msg_chiffre)):
-    message_chiffre_final += list_msg_chiffre[i]
+        for i in range(len(chiffrage_bloc)):
+            recup_lettre, recup_chiffre = dechiffre(chiffrage_bloc[i], dictionnaire, taille_blocV2)
+            list_msg_chiffre.append(recup_lettre)
+            list_msg_chiffre_int.append(recup_chiffre)
+    else:
+        for i in range(len(chiffrage_bloc)):
+            recup_lettre, recup_chiffre = dechiffre(chiffrage_bloc[i], dictionnaire, taille_bloc)
+            list_msg_chiffre.append(recup_lettre)
+            list_msg_chiffre_int.append(recup_chiffre)
+    print("etape 3a : dechiffrage du message chiffrée en nombres : ", list_msg_chiffre_int)
+    print("etape 3b : dechiffrage du message chiffrée en lettres : ", list_msg_chiffre)
+    list_last_chiffrage = []
+    for i in range(len(list_msg_chiffre_int)):
+        last_chiffrage = chiffrer_bloc(list_msg_chiffre_int[i], len(dictionnaire))
+        list_last_chiffrage.append(last_chiffrage)
+    print("etape 3c : chiffrage du message déchiffrée en nombres : ", list_last_chiffrage)
+    # construction du message
+    message_chiffre_final = ""
+    for i in range(len(list_msg_chiffre)):
+        message_chiffre_final += list_msg_chiffre[i]
+    return message_chiffre_final
+"""
 dechiffrage_bloc = []
 for i in range(len(list_last_chiffrage)):
     tmp = chiffrer_dechiffrer(list_last_chiffrage[i], d, n)
@@ -132,3 +137,37 @@ if(message_final == message_a_chiffrer.upper()):
     print("message chiffré  : ", message_chiffre_final)
     print("message déchiffré : ", message_final)
     print("fin du programme")
+"""
+def crypte(x, label, entry):
+    r = logic()
+    label.place(x=100,y=260, width=200, height=30)
+    entry.place(x=100,y=300, width=200, height=30)
+    entry.config(state="normal")
+    entry.delete(0,END)
+    entry.insert(0, r)
+    result.config(state="disabled")
+
+########################################
+
+first_window = Tk()
+result_label = Label(first_window)
+result_label.config(text="message crypter")
+result_label.place(x=100,y=260, width=200, height=30)
+result_label.place_forget()
+result = Entry(first_window)
+result.place(x=100,y=300, width=200, height=30)
+result.place_forget()
+#creation d'un label
+message_label = Label ( first_window , text="message à crypter")
+message_label.place(x=100, y=50, width=200, height=30)
+message_graph = Entry(first_window)
+message_graph.place(x=100, y=90, width=200, height=30)
+
+#creation d'un bouton
+first_button = Button(first_window, text="crypter le message"
+                      , command =lambda :crypte(x=message_graph.get(),
+                                                label=result_label,
+                                                entry=result))
+first_button.place(x=100, y=180, width=200, height=30)
+first_window.geometry("400x400")
+first_window.mainloop()
