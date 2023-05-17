@@ -58,7 +58,7 @@ dictionnaire[" "] = 40
 print(dictionnaire)
 taille_bloc = int((math.log(n, len(dictionnaire))))
 print("taille du bloc : ", taille_bloc)
-message_a_chiffrer = "lyes douki"
+message_a_chiffrer = input("tu veux chiffrer quoi?\n")
 list_des_bloc = decoupe_bloc(message_a_chiffrer, taille_bloc)
 print("etape 0a : decoupage du message en bloc :  ", list_des_bloc)
 list_des_bloc_chiffre = convert_bloc_to_int(list_des_bloc, dictionnaire)
