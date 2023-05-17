@@ -18,6 +18,7 @@ def inverse_mod(a, b):
     return (r, u, v)
 
 #fonction de nombre premier
+"""
 def is_prime(n):
     if n < 2:
         return False
@@ -25,6 +26,34 @@ def is_prime(n):
         return False
     for i in range(2, n):
         if n % i == 0:
+            return False
+    return True
+"""
+#algorithme de miller rabin
+def is_prime(n):
+    if n < 2:
+        return False
+    if n == 2 or n == 3:
+        return True
+    if n%2==0:
+        return False
+    r = 0
+    d = n-1
+    while d%2==0:
+        d = d//2
+        r += 1
+    for i in range(100):
+        a = random.randint(2, n-2)
+        x = pow(a, d, n)
+        if x==1 or x==n-1:
+            continue
+        for j in range(r-1):
+            x = pow(x, 2, n)
+            if x==1:
+                return False
+            if x==n-1:
+                break
+        else:
             return False
     return True
 #fonction qui genere nombre premier
