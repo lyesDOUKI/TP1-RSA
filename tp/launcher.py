@@ -1,9 +1,9 @@
 import math
-import tp.keysfonction.genration_keys as keysFonction
-from tp.chiffdechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
-from tp.utilities.bloc_utilities import decoupe_bloc, dechiffre
-from tp.utilities.bloc_utilities import convert_bloc_to_int
-from tp.utilities.bloc_utilities import chiffrer_bloc
+import keysfonction.genration_keys as keysFonction
+from chiffdechiff.chiffrer_dechiffrer import chiffrer_dechiffrer
+from utilities.bloc_utilities import decoupe_bloc, dechiffre
+from utilities.bloc_utilities import convert_bloc_to_int
+from utilities.bloc_utilities import chiffrer_bloc
 
 print("generation de clé publique et privée")
 (e, n), (d, n) = keysFonction.generate_keys(32)
