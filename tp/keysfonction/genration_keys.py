@@ -1,8 +1,8 @@
 import random
 
-from tp.utilities.calcul_arithm import inverse_mod
-from tp.utilities.calcul_arithm import is_prime
-from tp.utilities.calcul_arithm import factorize
+from utilities.calcul_arithm import inverse_mod
+from utilities.calcul_arithm import is_prime
+from utilities.calcul_arithm import factorize
 #fonction qui génère les clés publiques et privées
 def generate_keys(nbits):
     #test avec exercice 4 TD2 fait le 15/03/2023
